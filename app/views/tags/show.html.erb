@@ -1,0 +1,39 @@
+<p>
+  Nombre del Tag es: <%= @tag.name %>
+  <!-- tag.name  es la referencia que se hace al name del modelo tag este debe ser igual al que se usa new para llamar a este atributo en la vita new -->
+  
+</p>
+
+<p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam hendrerit orci vel urna tincidunt, id aliquet leo dapibus. Nunc sodales arcu auctor, aliquam augue ut, blandit lorem. Ut eleifend dui in interdum fringilla. Etiam eleifend, sem et varius ornare, massa tellus tincidunt metus, ac ultricies ex diam ac arcu. Pellentesque at scelerisque ex. Quisque lobortis lectus sit amet porttitor dapibus. Nunc eget sagittis enim. Aenean mollis rutrum ante. Etiam lacinia aliquam pellentesque. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+</p>
+
+<script>
+function addLink() {
+	var rb =  '<%= @tag.name.to_json %>';
+    //Get the selected text and append the extra info
+    var selection = window.getSelection(),
+        pagelink = '<br />titulo: '+ rb,
+        copytext = selection + pagelink
+        newdiv = document.createElement('div');
+
+    //hide the newly created container
+    newdiv.style.position = 'absolute';
+    newdiv.style.left = '-99999px';
+
+    //insert the container, fill it with the extended text, and define the new selection
+    document.body.appendChild(newdiv);
+    newdiv.innerHTML = copytext;
+    selection.selectAllChildren(newdiv);
+
+    window.setTimeout(function () {
+        document.body.removeChild(newdiv);
+    }, 100);
+}
+
+document.addEventListener('copy', addLink);
+</script>
+
+<%= link_to 'Index', tags_path %>
+<%= link_to 'Modificar', edit_tag_path %>
+

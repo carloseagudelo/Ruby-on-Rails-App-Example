@@ -1,0 +1,29 @@
+<h1>Vista para la nueva entrada de tags</h1>
+<!-- Form_ for es un helper from builder de rails para crear formularios -->
+<%= form_for :tags, url: tags_path do |f| %>
+	
+	<!-- Inicia validacion y muestra de mensajes en caso de error -->
+	<% if @tag.errors.any? %>
+  		<div id="error_explanation">
+    		<h2><%= pluralize(@tag.errors.count, "errores") %> Esta cometiendo los siguientes errores:</h2>
+    		<ul>
+    			<% @tag.errors.full_messages.each do |msg| %>
+      			<li><%= msg %></li>
+    			<% end %>
+    		</ul>
+  		</div>
+  	<% end %>
+	<!-- Termina la validacion -->
+
+	<!-- Se muestra el formulario de captura de datos -->
+  	<p>
+    	<%= f.label :name %><br>
+    	<%= f.text_field :name %>
+  	</p>
+ 
+  	<p>
+    	<%= f.submit %>
+  	</p>
+<% end %>
+
+
