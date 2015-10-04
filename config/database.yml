@@ -10,13 +10,12 @@
 #   http://dev.mysql.com/doc/refman/5.0/en/old-client.html
 #
 default: &default
-  adapter: mysql2
-  encoding: utf8
+  adapter: postgresql
+  encoding: unicode
   pool: 5
-  username: root
-  password:
-  hots: 127.0.0.1
-  socket: /opt/lampp/var/mysql/mysql.sock
+  username: qcctnrnbmhmlxs
+  password: fsRbGYswgb9r2mPGWHCMKKEQD_
+  hots: ec2-54-204-27-102.compute-1.amazonaws.com
 
 development:
   <<: *default

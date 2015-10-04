@@ -11,39 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150615222528) do
-
-  create_table "answers", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-  end
-
-  create_table "holas", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "posts", force: :cascade do |t|
-    t.string   "user",       limit: 255
-    t.string   "title",      limit: 255
-    t.string   "body",       limit: 255
-    t.integer  "tag_id",     limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-  end
-
-  add_index "posts", ["tag_id"], name: "index_posts_on_tag_id", using: :btree
-
-  create_table "questions", force: :cascade do |t|
-    t.integer  "tag_id",     limit: 4
-    t.integer  "post_id",    limit: 4
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-  end
-
-  add_index "questions", ["post_id"], name: "index_questions_on_post_id", using: :btree
-  add_index "questions", ["tag_id"], name: "index_questions_on_tag_id", using: :btree
+ActiveRecord::Schema.define(version: 20150607041030) do
 
   create_table "tags", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -51,7 +19,4 @@ ActiveRecord::Schema.define(version: 20150615222528) do
     t.datetime "updated_at",             null: false
   end
 
-  add_foreign_key "posts", "tags"
-  add_foreign_key "questions", "posts"
-  add_foreign_key "questions", "tags"
 end
